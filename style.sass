@@ -1,5 +1,25 @@
 /* start */
 
+@keyframes shake-bottom
+	0%,
+	100%
+		transform: rotate(0deg)
+		transform-origin: 50% 100%
+	10% 
+		transform: rotate(2deg)
+	20%,
+	40%,
+	60% 
+		transform: rotate(-4deg) 
+	30%,
+	50%,
+	70% 
+		transform: rotate(4deg) 
+	80% 
+		transform: rotate(-2deg)
+	90% 
+		transform: rotate(2deg)
+
 /* main */
 
 * 
@@ -27,9 +47,16 @@ span.bold
 
 li 
 	list-style-type: none
+	
+input
+	outline-style: none
 
 span.grey 
 	color: #b9b9b9
+	
+span.red
+	color: #ff0d0d
+	font-size: 17px
 
 /* index.html -start- */
 
@@ -101,7 +128,7 @@ a.button__account
 	background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%)
 
 .header__form__input 
-	width: 280px
+	width: 270px
 	height: 38px
 	border-radius: 0 3px 3px 0
 	border: 1px solid #e6e6e6
@@ -112,6 +139,7 @@ a.button__account
 	line-height: 38px
 	letter-spacing: 0.35px
 	text-indent: 16px
+	padding-right: 10px
 
 .button__submit__form 
 	display: block
@@ -122,6 +150,7 @@ a.button__account
 	text-align: center
 	border-radius: 0 3px 3px 0
 	border: 1px solid #e6e6e6
+	transition: all 0.3s
 
 /* nav */
 
@@ -222,6 +251,10 @@ a.stock__text
 	margin-top: 25px
 	background-color: white
 	color: rgba(34, 34, 34, 255)
+	transition: all 0.3s
+
+a.stock__text:hover
+	transform: translateX(5px)
 
 .stock__text__black 
 	font-size: 18px
@@ -287,6 +320,7 @@ p.featured__text
 	width: 263px
 	position: relative
 	margin-bottom: 39px
+	transition: all 0.3s
 
 .product:hover .product__add 
 	display: flex
@@ -300,6 +334,7 @@ p.featured__text
 .product__img 
 	width: 100%
 	height: 280px
+	transition: all 0.3s
 
 .product__add 
 	border: 1px solid #ffffff
@@ -314,6 +349,7 @@ p.featured__text
 	position: absolute
 	top: 98px
 	left: 70px
+	transition: all 0.3s
 
 .product__add:hover 
 	box-shadow: 0 0 5px #fff
@@ -330,6 +366,10 @@ a.button__browse
 	background-color: #f16d7f
 	text-align: center
 	line-height: 48px
+	transition: all 0.3s
+	
+a.button__browse:hover
+	transform: translateX(10px)
 
 /* section.benefits */
 
@@ -366,6 +406,9 @@ a.button__browse
 	font-size: 20px
 	font-weight: 700
 	letter-spacing: 0.5px
+	
+.benefits__head:hover
+	text-decoration: underline 
 
 .benefits__description 
 	color: #fbfbfb
@@ -426,6 +469,8 @@ a.button__browse
 	font-style: italic
 	line-height: 26px
 	letter-spacing: 0.4px
+	max-height: 45%
+	overflow: hidden 
 
 .social__left__name 
 	color: #f16d7f
@@ -485,12 +530,15 @@ a.button__browse
 	text-align: center
 
 .social__right__input 
-	width: 334px
+	width: 324px
 	height: 46px
 	border-radius: 23px 0 0 23px
 	background-color: #e1e1e1
 	text-indent: 28px
 	outline: none
+	padding-right: 10px
+	border: none
+	margin-right: -3px
 
 .social__right__button 
 	display: inline-block
@@ -596,6 +644,7 @@ footer.footer
 	font-weight: 400
 	letter-spacing: 0.4px
 	margin-left: 8px
+	transition: all 0.3s
 
 .social__link:hover 
 	color: #f7f7f8
@@ -821,6 +870,11 @@ details[open] > summary.catalog__navigation__head
 	font-weight: bold
 	line-height: 44px
 	text-align: center
+	transition: all 0.3s
+	
+.catalog__viewall__button:hover
+	color: #ffffff
+	background-color: #ef5b70
 
 .catalog__viewall__pages 
 	display: flex
@@ -944,7 +998,7 @@ h1.sinpage__catalog__head
 .sinpage__details 
 	width: 1140px
 	margin: 0 auto
-	height: 800px
+	min-height: 800px
 	border: 1px solid #eaeaea
 	background-color: #ffffff
 	display: flex
@@ -1048,7 +1102,7 @@ h1.sinpage__catalog__head
 
 .choosing__input 
 	margin-top: 16px
-	width: 144px
+	width: 134px
 	height: 35px
 	border: 1px solid #eaeaea
 	background-color: #ffffff
@@ -1057,6 +1111,7 @@ h1.sinpage__catalog__head
 	font-weight: 400
 	outline: none
 	text-indent: 16px
+	padding-right: 10px
 
 .sinpage__details__cart 
 	display: flex
@@ -1067,6 +1122,11 @@ h1.sinpage__catalog__head
 	height: 55px
 	border: 1px solid #ef5b70
 	background-color: #ffffff
+	margin-bottom: 135px
+
+.sinpage__details__cart:hover .sinpage__buttonCart
+	-webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both
+	animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both
 
 .sinpage__buttonCart 
 	display: flex
@@ -1131,7 +1191,7 @@ h1.sinpage__catalog__head
 		text-align: center
 		width: 128px
 	&__input
-		width: 54px
+		width: 34px
 		height: 30px
 		border: 1px solid #eaeaea
 		background-color: #ffffff
@@ -1141,6 +1201,7 @@ h1.sinpage__catalog__head
 		line-height: 30px
 		text-align: center
 		outline-style: none
+		padding: 0 10px 
 	&__shipping
 		text-align: center
 		width: 128px
@@ -1186,21 +1247,24 @@ h1.sinpage__catalog__head
 		font-size: 14px
 		font-weight: 700
 		text-transform: uppercase
+		transition: all 0.3s
 	&__button-clear:hover, &__button-continue:hover
-		transform: scale(1.01) 
+		transform: scale(1.03) 
 				
 .pc-details
 	&__head
+		display: block
 		margin-top: 13px
 		color: #222222
 		font-size: 13px
 		font-weight: 400
 		text-transform: uppercase
+		height: 37px
 	&__feature-color
 		font-size: 13px
 		font-weight: 300
 		line-height: 20px
-		margin-top: 30px
+		margin-top: 10px
 	&__feature-size
 		font-size: 13px
 		font-weight: 300
@@ -1233,7 +1297,7 @@ h1.sinpage__catalog__head
 
 .shipping
 	&__country, &__state, &__postcode
-		width: 355px
+		width: 345px
 		height: 45px
 		border: 1px solid #eaeaea
 		background-color: #ffffff
@@ -1243,7 +1307,8 @@ h1.sinpage__catalog__head
 		font-size: 13px
 		font-weight: 300
 		margin-bottom: 20px
-		outline: none 
+		outline: none
+		padding-right: 10px
 	&__state::placeholder, &__postcode::placeholder
 		color: #b1b1b1
 	&__button
@@ -1266,7 +1331,7 @@ h1.sinpage__catalog__head
 		font-weight: 300
 		margin-bottom: 24px
 	&__coupon-number
-		width: 355px
+		width: 345px
 		height: 45px
 		border: 1px solid #eaeaea
 		background-color: #ffffff
@@ -1276,7 +1341,8 @@ h1.sinpage__catalog__head
 		font-size: 13px
 		font-weight: 300
 		margin-bottom: 20px
-		outline: none 
+		outline: none
+		padding-right: 10px
 	&__coupon-number::placeholder
 		color: #b1b1b1
 	&__button
@@ -1317,6 +1383,10 @@ h1.sinpage__catalog__head
 		line-height: 50px
 		text-align: center
 		margin-bottom: 42px
+		transition: all 0.3s
+	&__button:hover
+		color: #f16d7f
+		background-color: #ffffff
 		
 .sub
 	&__text, &__number
@@ -1339,3 +1409,137 @@ h1.sinpage__catalog__head
 		
 /* shopping_cart.html -end- */
 
+/* checkout.html -start- */
+
+/* section.checkout */
+
+.checkout
+	display: flex
+	flex-flow: column wrap
+	justify-content: flex-start
+	margin-bottom: 90px
+	margin-top: 90px
+	&__item
+		color: #222222
+		font-size: 16px
+		font-weight: 700
+		line-height: 72px
+		text-transform: uppercase
+		border-bottom: 1px solid #e8e8e8
+	&__item_shipad
+		border-bottom: 1px solid #e8e8e8
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+
+.shipad
+	&__head
+		color: #222222
+		font-size: 16px
+		font-weight: 700
+		text-transform: uppercase
+		width: 1140px
+	&__reg
+		margin-left: 35px
+	&__reg-head
+		margin-top: 40px
+		color: #222222
+		font-size: 13px
+		font-weight: 400
+		text-transform: uppercase
+	&__reg-text
+		margin-top: 15px
+		margin-bottom: 34px
+		color: #b3b2b2
+		font-size: 13px
+		font-weight: 400
+	&__reg-choice
+		display: flex
+		align-items: center
+		margin-bottom: 20px
+	&__reg-check-yes
+		position: relative
+	&__reg-checkactive
+		position: absolute
+		top: 6px
+		left: 4px
+	&__reg-choice-text
+		margin-left: 14px
+		color: #222222
+		font-size: 12px
+		font-weight: 400
+		text-transform: uppercase
+	&__reg-head-warn
+		margin-top: 34px
+		color: #222222
+		font-size: 13px
+		font-weight: 400
+		text-transform: uppercase
+	&__reg-pluses
+		margin-bottom: 15px
+		color: #b3b2b2
+		font-size: 13px
+		font-weight: 400
+	&__reg-button
+		display: block
+		margin-top: 40px
+		margin-bottom: 80px
+		width: 180px
+		height: 50px
+		border: 1px solid #eaeaea
+		background-color: #ffffff
+		color: #4a4a4a
+		font-size: 14px
+		font-weight: 700
+		text-transform: uppercase
+		line-height: 50px
+		text-align: center
+	&__log
+		margin-right: 167px
+	&__log-auth
+		color: #222222
+		font-size: 12px
+		font-weight: 400
+		text-transform: uppercase
+		margin-bottom: 16px
+	&__log-input-e, &__log-input-p
+		outline-style: none
+		width: 380px
+		height: 45px
+		border: 1px solid #eaeaea
+		background-color: #ffffff
+		margin-bottom: 23px
+		text-indent: 10px
+		padding-right: 10px
+	&__log-note
+		color: #ff0d0d
+		font-size: 13px
+		font-weight: 400
+		line-height: 20px
+	&__log-actions
+		display: flex
+		margin-top: 34px
+	&__log-button
+		display: block
+		width: 180px
+		height: 50px
+		border: 1px solid #eaeaea
+		background-color: #ffffff
+		color: #4a4a4a
+		font-size: 14px
+		font-weight: 700
+		text-transform: uppercase
+		line-height: 50px
+		text-align: center
+	&__log-forgot
+		display: block
+		color: #222222
+		font-size: 14px
+		font-weight: 400
+		line-height: 20px
+		margin-top: 24px
+		margin-left: 32px
+	&__log-forgot:hover
+		text-decoration: underline 
+
+	
